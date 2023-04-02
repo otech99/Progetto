@@ -8,6 +8,7 @@ public class Server {
     private int numAttacchi;
     private int tempoRiparazione;
 
+
     public Server(String id, String idZonaS, int uptime,int numPorte, int numAttacchi,int tempoRiparazione ){
         this.id= id;
         this.idZonaS = idZonaS;

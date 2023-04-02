@@ -30,19 +30,21 @@ public class Progetto {
             zone.add(new Zona(IdZone));
         }
         for(int i = 0; i < numServer; i++){   //Itera per il numero di server immessi in input
-            String IdServer = scan.next();
-            String IdZonaS = scan.next();
-            int Uptime = scan.nextInt();
+            String idServer = scan.next();
+            String idZonaS = scan.next();
+            int uptime = scan.nextInt();
             int numPorte = scan.nextInt();
             int numAtt = scan.nextInt();
-            int TempR = scan.nextInt();
-            //trovare un modo per aggiungere lista comunicazione
-            // e aggiungere lista servizi
+            int tempR = scan.nextInt();
+            //String serverList = scan.next();
+            //String serviceList = scan.next();
 
-            server.add(new Server(IdServer, IdZonaS, Uptime, numPorte, numAtt, TempR));
+            //PROMEMORIA
+            //trovare un modo per aggiungere lista comunicazione server e collegarla alla zona
+            // e aggiungere lista servizi e collegarla ai server
+
+            server.add(new Server(idServer, idZonaS, uptime, numPorte, numAtt, tempR));
         }
-
-
 
 
         /*
