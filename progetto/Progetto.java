@@ -36,14 +36,24 @@ public class Progetto {
             int numPorte = scan.nextInt();
             int numAtt = scan.nextInt();
             int tempR = scan.nextInt();
-            String serverList = scan.next();
+            int numServerCollegati=0; //incremente ogni volta che viene aggiunto un server collegato
+
+            while (true) {  //aggiungere i server collegati ffinche nn ci sta una virgola e contare il numero dei server collegati
+                String serv=scan.next();
+                if (serv.contains(","))
+                numServerCollegati++;
+                else
+                    break;
+
+            }
+            //String serverList = scan.next();
             //String serviceList = scan.next();
 
             //PROMEMORIA
             //trovare un modo per aggiungere lista comunicazione server e collegarla alla zona
             // e aggiungere lista servizi e collegarla ai server
 
-            server.add(new Server(idServer,new Zona(idZonaS) , uptime, numPorte, numAtt, tempR));
+            server.add(new Server(idServer, idZonaS, uptime, numPorte, numAtt, tempR,numServerCollegati));
         }
 
 

@@ -81,4 +81,5 @@ public class Server {
                 ", tempoRiparazione=" + tempoRiparazione +
                 '}';
     }
+
 }
