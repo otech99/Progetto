@@ -36,7 +36,8 @@ public class Progetto {
             int numPorte = scan.nextInt();
             int numAtt = scan.nextInt();
             int tempR = scan.nextInt();
-            int numServerCollegati=0;
+            int numServerCollegati=0; //incremente ogni volta che viene aggiunto un server collegato
+
             while (true) {  //aggiungere i server collegati ffinche nn ci sta una virgola e contare il numero dei server collegati
                 String serv=scan.next();
                 if (serv.contains(","))
