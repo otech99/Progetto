@@ -49,7 +49,7 @@ public class Progetto {
 
 
             }
-            int numServ =0;
+            int numServ =0;//nuovo
             while (true) {
                 String serv=scan.next();
                 if (serv.contains(","))
