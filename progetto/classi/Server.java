@@ -19,4 +19,5 @@ public class Server {
         this.tempoRiparazione= tempoRiparazione;
         this.numServerCollegati= numServerCollegati;
     }
+
 }

@@ -1,13 +1,15 @@
 package progetto.classi;
 
 public class Zona {
-    private String id;
+    private String idZ;
     public Zona(String id){
-        this.id= id;
+        this.idZ= idZ;
     }
 
-    public String getZona(){
-        return this.id;
+    public String getIdZ() {
+        return this.idZ;
     }
+
+
 
 }
