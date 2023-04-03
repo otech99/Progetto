@@ -10,16 +10,15 @@ public class Server {
     private int numAttacchi;
     private int tempoRiparazione;
 
-    private ArrayList<String> ServerList = new ArrayList<String>();
+    private ArrayList<Server> ServerList = new ArrayList<Server>();
 
-    public Server(String id, Zona zona, int uptime, int numPorte, int numAttacchi, int tempoRiparazione, ArrayList<String> ServerList) {
+    public Server(String id, int uptime, int numPorte, int numAttacchi, int tempoRiparazione) {
         this.id = id;
         this.zona = zona;
         this.uptime = uptime;
         this.numPorte = numPorte;
         this.numAttacchi = numAttacchi;
         this.tempoRiparazione = tempoRiparazione;
-        this.ServerList = ServerList;
     }
 
     public String getId() {
@@ -68,6 +67,10 @@ public class Server {
 
     public void setTempoRiparazione(int tempoRiparazione) {
         this.tempoRiparazione = tempoRiparazione;
+    }
+
+    public void setServerList(Server server){
+        ServerList.add(server);
     }
 
     @Override
