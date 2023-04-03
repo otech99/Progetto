@@ -36,7 +36,7 @@ public class Progetto {
             int numPorte = scan.nextInt();
             int numAtt = scan.nextInt();
             int tempR = scan.nextInt();
-            //String serverList = scan.next();
+            String serverList = scan.next();
             //String serviceList = scan.next();
 
             //PROMEMORIA

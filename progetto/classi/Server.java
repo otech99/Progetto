@@ -1,5 +1,7 @@
 package progetto.classi;
 
+import java.util.ArrayList;
+
 public class Server {
     private String id;
     private Zona zona;
@@ -8,13 +10,16 @@ public class Server {
     private int numAttacchi;
     private int tempoRiparazione;
 
-    public Server(String id, Zona zona, int uptime, int numPorte, int numAttacchi, int tempoRiparazione) {
+    private ArrayList<String> ServerList = new ArrayList<String>();
+
+    public Server(String id, Zona zona, int uptime, int numPorte, int numAttacchi, int tempoRiparazione, ArrayList<String> ServerList) {
         this.id = id;
         this.zona = zona;
         this.uptime = uptime;
         this.numPorte = numPorte;
         this.numAttacchi = numAttacchi;
         this.tempoRiparazione = tempoRiparazione;
+        this.ServerList = ServerList;
     }
 
     public String getId() {
