@@ -43,7 +43,7 @@ public class Progetto {
             //trovare un modo per aggiungere lista comunicazione server e collegarla alla zona
             // e aggiungere lista servizi e collegarla ai server
 
-            server.add(new Server(idServer, idZonaS, uptime, numPorte, numAtt, tempR));
+            server.add(new Server(idServer,new Zona(idZonaS) , uptime, numPorte, numAtt, tempR));
         }
 
 
