@@ -52,40 +52,9 @@ public class Progetto {
             server[i] = new Server(idServer, uptime, numPorte, numAtt, tempR);
 
 
-            //int numServerCollegati=0; //incremente ogni volta che viene aggiunto un server collegato
-
-            /*
-            while (true) {  //aggiungere i server collegati ffinche nn ci sta una virgola e contare il numero dei server collegati
-                String serv=scan.next();
-                if (serv.contains(","))
-                numServerCollegati++;
-                else
-                    break;
-                if (numServerCollegati==0)
-                    System.out.println('-');
-
-
-            }
-            int numServ =0;
-            while (true) {
-                String serv=scan.next();
-                if (serv.contains(","))
-                    numServ++;
-                else
-                    break;
-                if (numServ==0)
-                    System.out.println('-');
-
-
-            }
-             */
-            //String serverList = scan.next();
-            //String serviceList = scan.next();
-
             //PROMEMORIA
             //trovare un modo per aggiungere lista comunicazione server e collegarla alla zona
             // e aggiungere lista servizi e collegarla ai server
-
 
             //server.add(new Server(idServer,new Zona(idZonaS), uptime, numPorte, numAtt, tempR, new Server(ListServer)));
         }
@@ -96,6 +65,8 @@ public class Progetto {
             for(int j = 0; j < serverColl.length; j++)
                 for(Server e : server)
                     if(e.getId() == serverColl[i])
+
+
 
         }
 
