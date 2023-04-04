@@ -1,12 +1,13 @@
 package progetto;
 
+import progetto.classi.Categoria;
 import progetto.classi.Server;
 import progetto.classi.Servizio;
 import progetto.classi.Zona;
 import java.util.*;
 
 public class Progetto {
-    public static void main(String[]args){
+    public static void main(String[]args) {
         Scanner scan = new Scanner(System.in);
 
         int numServizi = scan.nextInt();
@@ -21,20 +22,19 @@ public class Progetto {
         String[] ServerServizi = new String[numServizi];
 
 
-
-        for(int i = 0; i < numServizi; i++){    //itera per il numero di servizi immessi in input
+        for (int i = 0; i < numServizi; i++) {    //itera per il numero di servizi immessi in input
             String nomeServizio = scan.next();
             int numPorte = scan.nextInt();
             int numVul = scan.nextInt();
             servizi[i] = new Servizio(nomeServizio, numPorte, numVul);//chiama il costruttore e carica l'Array List
         }
-        for(int i = 0; i < numZone; i++){   //Itera per il numero di zone immessi in input
+        for (int i = 0; i < numZone; i++) {   //Itera per il numero di zone immessi in input
             String IdZone = scan.next();
             zone[i] = new Zona(IdZone);
         }
-        for(int i = 0; i < numServer; i++){   //Itera per il numero di server immessi in input
+        for (int i = 0; i < numServer; i++) {   //Itera per il numero di server immessi in input
             String idServer;
-            String  idZonaS;
+            String idZonaS;
             int uptime;
             int numPorte;
             int numAtt;
@@ -48,7 +48,6 @@ public class Progetto {
             tempR = scan.nextInt();
             ServerList[i] = scan.next();
             ServerServizi[i] = scan.next();
-
             server[i] = new Server(idServer, uptime, numPorte, numAtt, tempR);
 
 
@@ -57,19 +56,36 @@ public class Progetto {
             // e aggiungere lista servizi e collegarla ai server
 
             //server.add(new Server(idServer,new Zona(idZonaS), uptime, numPorte, numAtt, tempR, new Server(ListServer)));
+            }
+
+            //collega server
+            for (int i = 0; i < ServerList.length; i++) {
+                String[] serverColl = ServerList[i].split(",");
+                for (int j = 0; j < serverColl.length; j++)
+                    for (Server e : server)
+                        if (e.getId() == serverColl[i])
+            }
+
+
+            String categ;
+            if (ServerList.length > 5 && ServerList.length < numServer)
+                categ = "zombie";
+            if (ServerList.length == numServer)
+                categ = "honeypot";
+            if (ServerList.length == 0) ;
+            categ = "singlepot";
+            Categoria categoria;
+            switch (categ){
+                case "zombie":
+                    categoria = Categoria.zombie;
+                    break;
+                case "honeypot":
+                    categoria = Categoria.honeypot;
+                    break;
+                case "singlepot":
+                    categoria = Categoria.singlepot;
+                    break;
         }
-
-        //collega server
-        for(int i = 0; i < ServerList.length; i++){
-            String[] serverColl = ServerList[i].split(",");
-            for(int j = 0; j < serverColl.length; j++)
-                for(Server e : server)
-                    if(e.getId() == serverColl[i])
-
-
-
-        }
-
 
         /*
         for(Servizio e : servizi) {

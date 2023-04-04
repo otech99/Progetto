@@ -9,6 +9,7 @@ public class Server {
     private int numPorte;
     private int numAttacchi;
     private int tempoRiparazione;
+    private Categoria catg;
 
     private ArrayList<Server> ServerList = new ArrayList<Server>();
 
@@ -19,6 +20,7 @@ public class Server {
         this.numPorte = numPorte;
         this.numAttacchi = numAttacchi;
         this.tempoRiparazione = tempoRiparazione;
+        this.catg =catg;
     }
 
     public String getId() {
@@ -72,6 +74,13 @@ public class Server {
     public void setServerList(Server server){
         ServerList.add(server);
     }
+    public Categoria getCatg(){
+        return catg;
+    }
+    public void setCatg(Categoria catg){
+        this.catg= catg;
+    }
+
 
     @Override
     public String toString() {
