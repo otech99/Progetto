@@ -4,9 +4,37 @@ import progetto.classi.Categoria;
 import progetto.classi.Server;
 import progetto.classi.Servizio;
 import progetto.classi.Zona;
-import java.util.*;
+
+import java.util.Scanner;
 
 public class Progetto {
+
+    public static void aggiungiServerCollegati(Server[] server, String[] ServerList){
+        for(int i = 0; i < server.length; i++){
+            String[] serverList = ServerList[i].split(",");
+            for(int j = 0; j < serverList.length; j++)
+                for(Server e : server)
+                    if(e.getId().equals(serverList[j]))
+                        server[i].setServerList(e);
+        }
+    }
+
+    public static Zona cercaZonaServer(Zona[] zone, int i, String idZona){
+        for(Zona e : zone)
+            if (e.getId().equals(idZona))
+                return e;
+        return null;
+    }
+    public static void aggiungiServiziCollegati(Server[] server, Servizio[] servizi, String[] ServiziList){
+        for(int i = 0; i < server.length; i++){
+            String[] serviziList = ServiziList[i].split(",");
+            for(int j = 0; j < serviziList.length; j++)
+                for(Servizio e : servizi)
+                    if(e.getNome().equals(serviziList[j]))
+                        servizi[i].setServiziList(e);
+        }
+    }
+
     public static void main(String[]args) {
         Scanner scan = new Scanner(System.in);
 
@@ -19,7 +47,7 @@ public class Progetto {
         Server[] server = new Server[numServer];
 
         String[] ServerList = new String[numServer];
-        String[] ServerServizi = new String[numServizi];
+        String[] ServiziList = new String[numServer];
 
 
         for (int i = 0; i < numServizi; i++) {    //itera per il numero di servizi immessi in input
@@ -47,25 +75,18 @@ public class Progetto {
             numAtt = scan.nextInt();
             tempR = scan.nextInt();
             ServerList[i] = scan.next();
-            ServerServizi[i] = scan.next();
-            server[i] = new Server(idServer, uptime, numPorte, numAtt, tempR);
+            ServiziList[i] = scan.next();
 
+            Zona zonaServer = cercaZonaServer(zone, i, idZonaS);
 
-            //PROMEMORIA
-            //trovare un modo per aggiungere lista comunicazione server e collegarla alla zona
-            // e aggiungere lista servizi e collegarla ai server
+            server[i] = new Server(idServer, zonaServer, uptime, numPorte, numAtt, tempR);
 
             //server.add(new Server(idServer,new Zona(idZonaS), uptime, numPorte, numAtt, tempR, new Server(ListServer)));
             }
 
             //collega server
-            for (int i = 0; i < ServerList.length; i++) {
-                String[] serverColl = ServerList[i].split(",");
-                for (int j = 0; j < serverColl.length; j++)
-                    for (Server e : server)
-                        if (e.getId() == serverColl[i])
-            }
-
+            aggiungiServerCollegati(server, ServerList);
+            aggiungiServiziCollegati(server, servizi, ServiziList);
 
             String categ;
             if (ServerList.length > 5 && ServerList.length < numServer)
@@ -97,7 +118,13 @@ public class Progetto {
         for(Zona e : zone) {
             System.out.print(e.getZona()+"\n");
         }
-        */
+
+        for(Server e : server)
+            e.getServerList();
+         */
+
+        for(Servizio e : servizi)
+            e.getServiziList();
 
     }
 }

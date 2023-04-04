@@ -11,9 +11,9 @@ public class Server {
     private int tempoRiparazione;
     private Categoria catg;
 
-    private ArrayList<Server> ServerList = new ArrayList<Server>();
+    private ArrayList<Server> ServerList = new ArrayList<>();
 
-    public Server(String id, int uptime, int numPorte, int numAttacchi, int tempoRiparazione) {
+    public Server(String id, Zona zona, int uptime, int numPorte, int numAttacchi, int tempoRiparazione) {
         this.id = id;
         this.zona = zona;
         this.uptime = uptime;
@@ -73,6 +73,11 @@ public class Server {
 
     public void setServerList(Server server){
         ServerList.add(server);
+    }
+
+    public void getServerList(){
+        for(Server e : ServerList)
+            System.out.println(e.getId());
     }
     public Categoria getCatg(){
         return catg;

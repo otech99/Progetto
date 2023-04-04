@@ -17,13 +17,12 @@ public class Zona {
     public void setId(String id) {
         this.id = id;
     }
-    /*
     @Override
     public String toString() {
         return "Zona{" +
                 "id='" + id + '\'' +
                 '}';
     }
-     */
+
 
 }
