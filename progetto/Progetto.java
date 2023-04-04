@@ -18,22 +18,29 @@ public class Progetto {
                         server[i].setServerList(e);
         }
     }
-
-    public static Zona cercaZonaServer(Zona[] zone, int i, String idZona){
-        for(Zona e : zone)
-            if (e.getId().equals(idZona))
-                return e;
-        return null;
-    }
     public static void aggiungiServiziCollegati(Server[] server, Servizio[] servizi, String[] ServiziList){
         for(int i = 0; i < server.length; i++){
             String[] serviziList = ServiziList[i].split(",");
             for(int j = 0; j < serviziList.length; j++)
                 for(Servizio e : servizi)
                     if(e.getNome().equals(serviziList[j]))
-                        servizi[i].setServiziList(e);
+                        server[i].setServiziList(e);
         }
     }
+    public static Zona cercaZonaServer(Zona[] zone, int i, String idZona){
+        for(Zona e : zone)
+            if (e.getId().equals(idZona))
+                return e;
+        return null;
+    }
+
+    /*public static ServerPerZona(){
+        for(Server e : server)
+            for (Zona a: zone)
+                if(a.getZona().equals(a.getServerList()))
+
+
+    }*/
 
     public static void main(String[]args) {
         Scanner scan = new Scanner(System.in);
@@ -81,35 +88,43 @@ public class Progetto {
 
             server[i] = new Server(idServer, zonaServer, uptime, numPorte, numAtt, tempR);
 
-            //server.add(new Server(idServer,new Zona(idZonaS), uptime, numPorte, numAtt, tempR, new Server(ListServer)));
             }
 
             //collega server
             aggiungiServerCollegati(server, ServerList);
+            //collega servizi
             aggiungiServiziCollegati(server, servizi, ServiziList);
 
             String categ;
-            if (ServerList.length > 5 && ServerList.length < numServer)
-                categ = "zombie";
-            if (ServerList.length == numServer)
-                categ = "honeypot";
-            if (ServerList.length == 0) ;
-            categ = "singlepot";
-            Categoria categoria;
-            switch (categ){
-                case "zombie":
-                    categoria = Categoria.zombie;
-                    break;
-                case "honeypot":
-                    categoria = Categoria.honeypot;
-                    break;
-                case "singlepot":
-                    categoria = Categoria.singlepot;
-                    break;
+            for(int i=0; i<numServer; i++){
+                if (ServerList.length > 5 && ServerList.length < numServer)
+                    categ = "zombie";
+                //se il server è in comunicazione con tutti i server della sua zona
+                for(Server e : server) {
+                    //if (server[i])
+                        categ = "honeypot";
+                }
+
+                if (ServerList.length == 0) ;
+                categ = "singlepot";
+                Categoria categoria;
+                switch (categ){
+                    case "zombie":
+                        categoria = Categoria.zombie;
+                        break;
+                    case "honeypot":
+                        categoria = Categoria.honeypot;
+                        break;
+                    case "singlepot":
+                        categoria = Categoria.singlepot;
+                        break;
+            }
+
+
         }
 
-        /*
-        for(Servizio e : servizi) {
+
+        /*for(Servizio e : servizi) {
             System.out.print(e.getNome()+" ");
             System.out.print(e.getPorte()+" ");
             System.out.print(e.getVul()+"\n");
@@ -118,13 +133,10 @@ public class Progetto {
         for(Zona e : zone) {
             System.out.print(e.getZona()+"\n");
         }
-
+        */
         for(Server e : server)
             e.getServerList();
-         */
-
-        for(Servizio e : servizi)
-            e.getServiziList();
-
+            for (Server a : server)
+                a.getServiziList();
     }
 }
