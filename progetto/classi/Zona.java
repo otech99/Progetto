@@ -1,20 +1,13 @@
 package progetto.classi;
 
+import java.util.ArrayList;
+
 public class Zona {
     private String id;
-    int servPerZona;
+    ArrayList<Server> serverZona = new ArrayList<>();
     public Zona(String id){
         this.id= id;
-        this.servPerZona=servPerZona;
     }
-    public int getServPerZona(){
-        return this.servPerZona;
-    }
-
-    public void setServPerZona(int servPerZona) {
-        this.servPerZona = servPerZona;
-    }
-
     public String getZona(){
         return this.id;
     }
@@ -25,6 +18,12 @@ public class Zona {
 
     public void setId(String id) {
         this.id = id;
+    }
+    public void setServerZona(Server server){
+        this.serverZona.add(server);
+    }
+    public ArrayList<Server> getServerZona(){
+        return this.serverZona;
     }
     @Override
     public String toString() {

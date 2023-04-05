@@ -77,9 +77,8 @@ public class Server {
         ServerList.add(server);
     }
 
-    public void getServerList(){
-        for(Server e : ServerList)
-            System.out.print(e.getId()+" ");
+    public ArrayList<Server> getServerList(){
+        return this.ServerList;
     }
     public void getServiziList(){
         for(Servizio e : ServiziList)
