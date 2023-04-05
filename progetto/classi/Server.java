@@ -35,6 +35,7 @@ public class Server {
 
     public Zona getZona() {
         return zona;
+
     }
 
     public void setZona(Zona zona) {

@@ -119,5 +119,23 @@ public class Progetto {
             System.out.print(e.getZona()+"\n");
         }
 
+
+        for(Zona e : zone) {
+            System.out.print(e.getZona()+"\n");
+        }
+
+        for(Server e : server){
+            System.out.print(e.getId()+" ");
+            System.out.println(e.getZona()+" ");
+            System.out.print(e.getUptime()+" ");
+            System.out.print(e.getNumPorte()+" ");
+            System.out.print(e.getNumAttacchi()+" ");
+            System.out.print(e.getTempoRiparazione()+" ");
+            e.getServerList();
+            e.getServiziList();
+            System.out.println();
+        }
+
+
     }
 }
