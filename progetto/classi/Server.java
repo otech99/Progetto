@@ -10,6 +10,7 @@ public class Server {
     private int numAttacchi;
     private int tempoRiparazione;
     private Categoria catg;
+    private static int numServerTotali;
 
     private ArrayList<Server> ServerList = new ArrayList<>();
     private ArrayList<Servizio> ServiziList = new ArrayList<>();
@@ -23,6 +24,7 @@ public class Server {
         this.numAttacchi = numAttacchi;
         this.tempoRiparazione = tempoRiparazione;
         this.catg =catg;
+        numServerTotali++;
     }
 
     public String getId() {
@@ -94,7 +96,9 @@ public class Server {
     public void setCatg(Categoria catg){
         this.catg= catg;
     }
-
+    public static int getNumServerTotali() {
+        return numServerTotali;
+    }
 
     @Override
     public String toString() {

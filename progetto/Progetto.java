@@ -28,10 +28,10 @@ public class Progetto {
                         server[i].setServiziList(e);
         }
     }
-    public static Zona cercaZonaServer(Zona[] zone, String idZona){
-        for(Zona e : zone)
-            if (e.getId().equals(idZona))
-                return e;
+    public static Zona  cercaZonaServer(Zona[] zone, String idZona){
+        for(int i=0; i< zone.length; i++)
+            if (zone[i].getId().equals(idZona))
+                return zone[i];
         return null;
     }
     public static void assegnaCategoria(Server[] server){
@@ -98,26 +98,22 @@ public class Progetto {
             ServiziList[i] = scan.next();
 
             Zona zonaServer = cercaZonaServer(zone,idZonaS);
-
-            server[i] = new Server(idServer, zonaServer, uptime, numPorte, numAtt, tempR);
+            //System.out.println("zone : "+zonaServer.getId());
+            server[i] = new Server(idServer,zonaServer, uptime, numPorte, numAtt, tempR);
 
             if(zonaServer != null)
                 zonaServer.setServerZona(server[i]);
 
         }
 
-            //collega server
-            aggiungiServerCollegati(server, ServerList);
-            //collega servizi
-            aggiungiServiziCollegati(server, servizi, ServiziList);
-            //assegna categoria server
-            assegnaCategoria(server);
+        //collega server
+        aggiungiServerCollegati(server, ServerList);
+        //collega servizi
+        aggiungiServiziCollegati(server, servizi, ServiziList);
+        //assegna categoria server
+        assegnaCategoria(server);
 
 
-
-        for(Zona e : zone) {
-            System.out.print(e.getZona()+"\n");
-        }
 
 
         for(Zona e : zone) {
@@ -126,15 +122,19 @@ public class Progetto {
 
         for(Server e : server){
             System.out.print(e.getId()+" ");
-            System.out.println(e.getZona()+" ");
+            System.out.print(e.getZona().getId()+" ");
             System.out.print(e.getUptime()+" ");
             System.out.print(e.getNumPorte()+" ");
             System.out.print(e.getNumAttacchi()+" ");
             System.out.print(e.getTempoRiparazione()+" ");
-            e.getServerList();
+            e.getServerList();//RICONTROLLARE
             e.getServiziList();
             System.out.println();
         }
+
+
+
+
 
 
     }
