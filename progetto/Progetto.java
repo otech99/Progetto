@@ -1,5 +1,6 @@
 package progetto;
 
+import progetto.TASK.task1;
 import progetto.classi.Categoria;
 import progetto.classi.Server;
 import progetto.classi.Servizio;
@@ -29,9 +30,9 @@ public class Progetto {
         }
     }
     public static Zona  cercaZonaServer(Zona[] zone, String idZona){
-        for(int i=0; i< zone.length; i++)
-            if (zone[i].getId().equals(idZona))
-                return zone[i];
+        for (Zona zona : zone)
+            if (zona.getId().equals(idZona))
+                return zona;
         return null;
     }
     public static void assegnaCategoria(Server[] server){
@@ -56,7 +57,6 @@ public class Progetto {
         int numServizi = scan.nextInt();
         int numZone = scan.nextInt();
         int numServer = scan.nextInt();
-
         Servizio[] servizi = new Servizio[numServizi];
         Zona[] zone = new Zona[numZone];
         Server[] server = new Server[numServer];
@@ -116,7 +116,7 @@ public class Progetto {
 
 
 
-        for(Zona e : zone) {
+        /*for(Zona e : zone) {
             System.out.print(e.getZona()+"\n");
         }
 
@@ -130,12 +130,15 @@ public class Progetto {
             e.getServerList();//RICONTROLLARE
             e.getServiziList();
             System.out.println();
-        }
+        }*/
 
+        task1 obj= new task1();
+        obj.servPerCat(server);
 
 
 
 
 
     }
+
 }
