@@ -1,6 +1,5 @@
 package progetto;
 
-import progetto.TASK.task1;
 import progetto.classi.Categoria;
 import progetto.classi.Server;
 import progetto.classi.Servizio;
@@ -100,6 +99,8 @@ public class Progetto {
             Zona zonaServer = cercaZonaServer(zone,idZonaS);
             //System.out.println("zone : "+zonaServer.getId());
             server[i] = new Server(idServer,zonaServer, uptime, numPorte, numAtt, tempR);
+            System.out.println(ServerList[i]);
+            System.out.println(ServiziList[i]);
 
             if(zonaServer != null)
                 zonaServer.setServerZona(server[i]);
@@ -113,9 +114,9 @@ public class Progetto {
         //assegna categoria server
         assegnaCategoria(server);
 
-
-
-
+        for (Server s: server){
+            System.out.println(s.getServerList());
+        }
         /*for(Zona e : zone) {
             System.out.print(e.getZona()+"\n");
         }
@@ -132,8 +133,9 @@ public class Progetto {
             System.out.println();
         }*/
 
-        task1 obj= new task1();
-        obj.servPerCat(server);
+        //task1 obj= new task1();
+        //obj.stampaNumeroServerPerCategoria(server);
+
 
 
 

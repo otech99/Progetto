@@ -83,9 +83,8 @@ public class Server {
     public ArrayList<Server> getServerList(){
         return this.ServerList;
     }
-    public void getServiziList(){
-        for(Servizio e : ServiziList)
-            System.out.print(e.getNome()+" ");
+    public ArrayList<Servizio>getServiziList(){
+        return this.ServiziList;
     }
     public void setServiziList(Servizio servizio){
         ServiziList.add(servizio);
