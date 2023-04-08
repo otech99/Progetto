@@ -86,6 +86,21 @@ public class Server {
     public ArrayList<Servizio>getServiziList(){
         return this.ServiziList;
     }
+
+    public ArrayList<String> getServerCollegati(){
+        ArrayList<String> serverColl = new ArrayList<>();
+        for(Server e : ServerList)
+            serverColl.add(e.getId());
+
+        return serverColl;
+    }
+    public ArrayList<String> getServiziServer(){
+        ArrayList<String> serviziServer = new ArrayList<>();
+        for(Servizio e : ServiziList)
+            serviziServer.add(e.getNome());
+
+        return serviziServer;
+    }
     public void setServiziList(Servizio servizio){
         ServiziList.add(servizio);
     }
