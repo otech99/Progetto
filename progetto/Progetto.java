@@ -42,7 +42,7 @@ public class Progetto {
             if(numServerColl == 0)
                 s.setCatg(Categoria.singlepot);
             else
-                if(numServerColl == numServerZona)
+                if((numServerColl + 1) == numServerZona)
                     s.setCatg(Categoria.honeypot);
                 else
                     if(numServerColl >= 5)
@@ -99,8 +99,6 @@ public class Progetto {
             Zona zonaServer = cercaZonaServer(zone,idZonaS);
             //System.out.println("zone : "+zonaServer.getId());
             server[i] = new Server(idServer,zonaServer, uptime, numPorte, numAtt, tempR);
-            System.out.println(ServerList[i]);
-            System.out.println(ServiziList[i]);
 
             if(zonaServer != null)
                 zonaServer.setServerZona(server[i]);
@@ -114,13 +112,6 @@ public class Progetto {
         //assegna categoria server
         assegnaCategoria(server);
 
-        for (Server s: server){
-            System.out.println(s.getServerList());
-        }
-        /*for(Zona e : zone) {
-            System.out.print(e.getZona()+"\n");
-        }
-
         for(Server e : server){
             System.out.print(e.getId()+" ");
             System.out.print(e.getZona().getId()+" ");
@@ -128,10 +119,10 @@ public class Progetto {
             System.out.print(e.getNumPorte()+" ");
             System.out.print(e.getNumAttacchi()+" ");
             System.out.print(e.getTempoRiparazione()+" ");
-            e.getServerList();//RICONTROLLARE
-            e.getServiziList();
-            System.out.println();
-        }*/
+            System.out.println(e.getServerList());//RICONTROLLARE
+            System.out.println(e.getServiziList());
+
+        }
 
         //task1 obj= new task1();
         //obj.stampaNumeroServerPerCategoria(server);
