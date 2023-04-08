@@ -50,6 +50,7 @@ public class Progetto {
         }
     }
 
+
     public static void main(String[]args) {
         Scanner scan = new Scanner(System.in);
 
@@ -111,7 +112,7 @@ public class Progetto {
         aggiungiServiziCollegati(server, servizi, ServiziList);
         //assegna categoria server
         assegnaCategoria(server);
-
+        /*
         for(Server e : server){
             System.out.print(e.getId()+" ");
             System.out.print(e.getZona().getId()+" ");
@@ -119,10 +120,15 @@ public class Progetto {
             System.out.print(e.getNumPorte()+" ");
             System.out.print(e.getNumAttacchi()+" ");
             System.out.print(e.getTempoRiparazione()+" ");
-            System.out.println(e.getServerList());//RICONTROLLARE
-            System.out.println(e.getServiziList());
-
+            System.out.println(e.getServerList().size());
+            //System.out.println(e.getServiziList());
+            System.out.println(e.getCatg());
         }
+        */
+        //ServerPerCateg(server);
+
+
+
 
         //task1 obj= new task1();
         //obj.stampaNumeroServerPerCategoria(server);
