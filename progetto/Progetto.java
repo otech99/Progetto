@@ -119,8 +119,8 @@ public class Progetto {
             System.out.print(e.getNumPorte()+" ");
             System.out.print(e.getNumAttacchi()+" ");
             System.out.print(e.getTempoRiparazione()+" ");
-            System.out.println(e.getServerCollegati());//RICONTROLLARE
-            System.out.println(e.getServiziServer());
+            System.out.println(e.getServerList());//RICONTROLLARE
+            System.out.println(e.getServiziList());
 
         }
 

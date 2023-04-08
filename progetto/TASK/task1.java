@@ -15,27 +15,6 @@ public class task1 {
         System.out.print(Server.getNumServerTotali()+" ");
         System.out.println(Zona.getNumZoneTotali());
     }
-
-    /* FUNZIONE ALTERNATIVA PER STAMAPRE IL NUMERO DI SERVER PER OGNI CATEGORIA
-    public static void ServerPerCateg(Server[] server){
-        int zombie=0, honeypot=0, singleton=0;
-        for(Server s:server){
-            if(s.getCatg().equals(Categoria.zombie)){
-                zombie++;
-            }
-            if(s.getCatg().equals(Categoria.honeypot)){
-                honeypot++;
-            }
-            if(s.getCatg().equals(Categoria.singlepot)){
-                singleton++;
-            }
-        }
-        System.out.print(zombie+" ");
-        System.out.print(honeypot+" ");
-        System.out.print(singleton);
-    }
-     */
-
     // Funzione per stampare il numero di server per ogni categoria
     public static void serverPerCategoria(Server[] server) {
         Map<Categoria, Integer> conteggioCategorie = new HashMap<>();
@@ -59,7 +38,6 @@ public class task1 {
             System.out.println(categoria + " " + numeroServer);
         }
     }
-
     // Funzione per ottenere la categoria con il maggior numero di server
     public static Categoria getCategoriaConPiuServer(Server[] server) {
         Map<Categoria, Integer> conteggioCategorie = new HashMap<>();
