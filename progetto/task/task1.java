@@ -23,11 +23,11 @@ public class task1 {
             Categoria categoria = s.getCatg();
             switch (categoria){
                 case zombie ->
-                    zombie++;
+                        zombie++;
                 case honeypot ->
-                    honeypot++;
+                        honeypot++;
                 case singleton ->
-                    singleton++;
+                        singleton++;
             }
         }
         System.out.print(zombie+" ");
@@ -101,7 +101,7 @@ public class task1 {
             for (Server s:server)
                 if (s.getZona().equals(zon)){
                     i++;
-                servPerZon.put(zon,i);}
+                    servPerZon.put(zon,i);}
             System.out.println(servPerZon.get(zon)+' ');
         }
 
