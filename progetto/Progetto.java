@@ -8,6 +8,8 @@ import progetto.classi.Zona;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static progetto.TASK.task1.*;
+
 public class Progetto {
 
     public static void aggiungiServerCollegati(Server[] server, String[] ServerList){
@@ -40,7 +42,7 @@ public class Progetto {
             int numServerColl = serverColl.size();
             int numServerZona = s.getZona().getServerZona().size();
             if(numServerColl == 0)
-                s.setCatg(Categoria.singlepot);
+                s.setCatg(Categoria.singleton);
             else
                 if((numServerColl + 1) == numServerZona)
                     s.setCatg(Categoria.honeypot);
@@ -112,7 +114,7 @@ public class Progetto {
         //assegna categoria server
         assegnaCategoria(server);
 
-        for(Server e : server){
+       /* for(Server e : server){
             System.out.print(e.getId()+" ");
             System.out.print(e.getZona().getId()+" ");
             System.out.print(e.getUptime()+" ");
@@ -122,10 +124,16 @@ public class Progetto {
             System.out.println(e.getServerCollegati());//RICONTROLLARE
             System.out.println(e.getServiziServer());
 
-        }
-
+        }*/
+        //serverPerCategoria(server);
         //task1 obj= new task1();
         //obj.stampaNumeroServerPerCategoria(server);
+        numTotale();
+        serverPerCateg(server);
+        System.out.println(getCategoriaConPiuServer(server));
+        System.out.println(getServerConPiuColleg(server));
+        System.out.println(numServUptime(server));
+        serverPerZona(server,zone);
 
 
 

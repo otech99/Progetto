@@ -16,50 +16,24 @@ public class task1 {
         System.out.println(Zona.getNumZoneTotali());
     }
 
-    /* FUNZIONE ALTERNATIVA PER STAMAPRE IL NUMERO DI SERVER PER OGNI CATEGORIA
-    public static void ServerPerCateg(Server[] server){
+    // FUNZIONE ALTERNATIVA PER STAMAPRE IL NUMERO DI SERVER PER OGNI CATEGORIA
+    public static void serverPerCateg(Server[] server){
         int zombie=0, honeypot=0, singleton=0;
         for(Server s:server){
-            if(s.getCatg().equals(Categoria.zombie)){
-                zombie++;
-            }
-            if(s.getCatg().equals(Categoria.honeypot)){
-                honeypot++;
-            }
-            if(s.getCatg().equals(Categoria.singlepot)){
-                singleton++;
+            Categoria categoria = s.getCatg();
+            switch (categoria){
+                case zombie ->
+                    zombie++;
+                case honeypot ->
+                    honeypot++;
+                case singleton ->
+                    singleton++;
             }
         }
         System.out.print(zombie+" ");
         System.out.print(honeypot+" ");
-        System.out.print(singleton);
+        System.out.println(singleton);
     }
-     */
-
-    // Funzione per stampare il numero di server per ogni categoria
-    public static void serverPerCategoria(Server[] server) {
-        Map<Categoria, Integer> conteggioCategorie = new HashMap<>();
-
-        // Itera sulla lista dei server e aggiorna il conteggio delle categorie
-        for (Server s : server) {
-            Categoria categoria = s.getCatg();
-            if (categoria != null) {
-                if (conteggioCategorie.containsKey(categoria)) {
-                    conteggioCategorie.put(categoria, conteggioCategorie.get(categoria) + 1);
-                } else {
-                    conteggioCategorie.put(categoria, 1);
-                }
-            }
-        }
-
-        // Stampa il numero di server per ogni categoria
-        for (Map.Entry<Categoria, Integer> entry : conteggioCategorie.entrySet()) {
-            Categoria categoria = entry.getKey();
-            int numeroServer = entry.getValue();
-            System.out.println(categoria + " " + numeroServer);
-        }
-    }
-
     // Funzione per ottenere la categoria con il maggior numero di server
     public static Categoria getCategoriaConPiuServer(Server[] server) {
         Map<Categoria, Integer> conteggioCategorie = new HashMap<>();
@@ -107,6 +81,30 @@ public class task1 {
             }
         }
         return nomeServerLessicografico;
+    }
+    //RITORNA IL NUMERO DI SERVER CON UPTIME ALMENO 98
+    public static int numServUptime(Server[] server){
+        int a = 98;
+        int numServUp=0;
+        for (Server s: server){
+            if (s.getUptime()>= a)
+                numServUp++;
+        }
+        return numServUp;
+    }
+    // ancora da controllare perche non va bene
+    public static void serverPerZona(Server[] server,Zona[] zona){
+        Map<String,Integer>servPerZon =new HashMap<>();
+        for (Zona z: zona) {
+            String zon = z.getId();
+            int i = 0;
+            for (Server s:server)
+                if (s.getZona().equals(zon)){
+                    i++;
+                servPerZon.put(zon,i);}
+            System.out.println(servPerZon.get(zon)+' ');
+        }
+
     }
 
 }

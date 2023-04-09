@@ -10,7 +10,7 @@ public class Zona {
         this.id= id;
         numZoneTotali++;
     }
-    public String getZona(){
+    public String getZona(){ // non serve?
         return this.id;
     }
 
