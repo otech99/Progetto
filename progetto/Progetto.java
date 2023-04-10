@@ -112,7 +112,8 @@ public class Progetto {
         //task1 tsk = new task1();
         //tsk.task1s(server,zone);
         Task2 tsk2 = new Task2();
-        System.out.println(tsk2.condizione4(zone,servizi,server));
+        tsk2.task2(server,zone,servizi,scan);
+
 
 
     }

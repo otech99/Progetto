@@ -7,17 +7,27 @@ import progetto.classi.Zona;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class Task2 {
-    private int p = 2;
-    private int q = 4;
+    private int p;
+    private int q;
+
+    public void task2(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan){
+        p = scan.nextInt();
+        q= scan.nextInt();
+
+        if(condizione1(server)&&condizione2(zona,server)&&condizione3(server)&&condizione4(zona, servizio, server))
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+    }
 
     private boolean condizione1(Server[] server) {
         int a = 0;
         for (Server s : server) {
             if (q == s.getServiziList().size())
                 a++;
-            System.out.println(s.getServiziList().size());
         }
         return a == p;
     }
@@ -43,8 +53,6 @@ public class Task2 {
             for (Server s2 : server){
                 if(!(s1.getId().equals(s2.getId())))
                     if (s1.getZona().getId().equals(s2.getZona().getId())){
-                    //System.out.println(s1.getServiziServer());
-                    //System.out.println(s1.getServiziList());
                 //copia i servizi in due liste
                 ArrayList<Servizio>lista1 = new ArrayList<>(s1.getServiziList());
                 ArrayList<Servizio>lista2 = new ArrayList<>(s2.getServiziList());
@@ -59,21 +67,20 @@ public class Task2 {
                         if (servizio1.getNome().equals(servizio2.getNome()))
                             if ((servizio1.getVul() > a) && (servizio1.getVul() < b))
                                 c++;
-                        System.out.println(c);
                     }
                 }
                 }
             }
         }
         //al massimo un altro server
-        //perche due server saranno paragonati due volte
-        return c <= 2;
+        return c <= 2; //perche due server saranno paragonati due volte
     }
-    //CONDIZIONE 4 ANCORA DA SISTEMARE
-    public boolean condizione4(Zona[] zona,Servizio[] servizio,Server[] server){
-        int a =0;
+    private boolean condizione4(Zona[] zona,Servizio[] servizio,Server[] server){
+        int b=0;
         for (Zona z: zona){
+            int a =0;
             for (Server s1: server){
+                int sc=0;
                 if (z.getId().equals(s1.getZona().getId())){
                     ArrayList<Servizio> servz = new ArrayList<>(s1.getServiziList());
                     ArrayList<String> servizi= new ArrayList<>();
@@ -81,7 +88,6 @@ public class Task2 {
                         servizi.add(sz.getNome());
                     }
                     Collections.sort(servizi);
-
                     for (Server s2: server){
                         if (!s1.getId().equals(s2.getId()))
                             if (s1.getZona().equals(s2.getZona()))
@@ -90,16 +96,20 @@ public class Task2 {
                     servz.sort(Comparator.comparing(Servizio::getNome));
 
                     if (servz.size()==servizi.size()) {
-
                         for (int i = 0; i < servz.size(); i++) {
-                            if (servz.get(i).equals(servizi.get(i)))
+                            if(servz.get(i).getNome().equals(servizi.get(i))){
                                 a++;
-                            System.out.println(a);
+                            }
+                            if(a==servz.size())
+                                b++;
                         }
                     }
+                    sc++;
+                    if (sc>=1)   //FA IN MODO CHE PRENDIAMO UNA LISTA PER ZONA
+                        break;
                 }
             }
         }
-        return a>=1;
+        return b>=1;
     }
 }
