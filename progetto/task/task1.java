@@ -8,7 +8,7 @@ import progetto.classi.Zona;
 import java.util.*;
 
 public class task1 {
-    public static void task1s(Server[] server,Zona[] zona){
+    public void task1s(Server[] server,Zona[] zona){
         info1();
 
         info2(server);
@@ -30,20 +30,16 @@ public class task1 {
         System.out.print(Server.getNumServerTotali()+" ");
         System.out.println(Zona.getNumZoneTotali());
     }
-    // FUNZIONE ALTERNATIVA PER STAMAPRE IL NUMERO DI SERVER PER OGNI CATEGORIA
+    //STAMPA IL NUMERO DI SERVER PER OGNI CATEGORIA
     private static void info2(Server[] server){
         int zombie=0, honeypot=0, singleton=0;
         for(Server s:server){
             Categoria categoria = s.getCatg();
             switch (categoria){
-                case zombie -> {
+                case zombie ->
                     zombie++;
-                    break;
-                }
-                case honeypot ->{
+                case honeypot ->
                         honeypot++;
-                break;
-                }
                 case singleton ->
                         singleton++;
             }
@@ -55,7 +51,7 @@ public class task1 {
     // Funzione per ottenere la categoria con il maggior numero di server
     // Restituisci il nome del server a cui appartiene l'ArrayList più lunga tra le ArrayList di serverCollegati
     private static void info3(Server[] server) {
-        String servConPiuColl = null;
+        //String servConPiuColl = null;
         int lunghezzaMax = 0;
         String nomeServerLessicografico = null;
 
@@ -65,12 +61,13 @@ public class task1 {
         for (int i = server.length - 1; i >= 0; i--) {
             if (server[i].getServerList().size() > lunghezzaMax) {
                 lunghezzaMax = server[i].getServerList().size();
-                servConPiuColl = server[i].getId();
+                //servConPiuColl = server[i].getId();
                 nomeServerLessicografico = server[i].getId();
-            } else if (server[i].getServerList().size() == lunghezzaMax && server[i].getId().compareTo(nomeServerLessicografico) < 0) {
+            } else if (server[i].getServerList().size() == lunghezzaMax && server[i].getId().compareTo(Objects.requireNonNull(nomeServerLessicografico)) < 0)
                 nomeServerLessicografico = server[i].getId();
-            }
         }
+        if (nomeServerLessicografico==null)
+            System.out.println();
         System.out.println(nomeServerLessicografico);
     }
     //RITORNA IL NUMERO DI SERVER CON UPTIME ALMENO 98
@@ -118,7 +115,7 @@ public class task1 {
                 numMaxUptime++;
         for (Server s:server)
             if (s.getUptime() < minUptime) {
-                maxUptime = s.getUptime();
+                minUptime = s.getUptime();
             }
         for (Server s: server)
             if (s.getUptime() == minUptime)
@@ -173,12 +170,12 @@ public class task1 {
         }
         List<Map.Entry<String, Integer>> listaZoneCollegamenti = new ArrayList<>(collPerZon.entrySet());
         // Ordinamento della lista in base ai valori (numero di collegamenti) in ordine decrescente
-        Collections.sort(listaZoneCollegamenti, (entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+        listaZoneCollegamenti.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
         int maxColl= listaZoneCollegamenti.get(0).getValue();
         //calcolo di numero di zone con il numero di collegamenti piu alto
         int numZone= 1;
         for (int i=1;i<listaZoneCollegamenti.size();i++){
-            if (listaZoneCollegamenti.get(i).equals(maxColl))
+            if (listaZoneCollegamenti.get(i).getValue().equals(maxColl))
                 numZone++;
         }
         System.out.println(numZone);
