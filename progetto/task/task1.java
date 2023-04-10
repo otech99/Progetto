@@ -6,6 +6,7 @@ import progetto.classi.Server;
 import progetto.classi.Zona;
 
 import java.util.*;
+//commit
 
 public class task1 {
     public void task1s(Server[] server,Zona[] zona){
