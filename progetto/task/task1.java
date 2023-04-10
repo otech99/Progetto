@@ -6,7 +6,6 @@ import progetto.classi.Server;
 import progetto.classi.Zona;
 
 import java.util.*;
-//commit
 
 public class task1 {
     public void task1s(Server[] server,Zona[] zona){
@@ -127,6 +126,7 @@ public class task1 {
 
     }
 
+    // Restituisce la categoria con il maggior numero di server
     private static void info7(Server[] server) {
         Map<Categoria, Integer> conteggioCategorie = new HashMap<>();
         // Itera sulla lista dei server e aggiorna il conteggio delle categorie
@@ -151,7 +151,6 @@ public class task1 {
                 }
             }
         }
-        // Restituisci la categoria con il maggior numero di server
         System.out.println(categoriaMax);
     }
 

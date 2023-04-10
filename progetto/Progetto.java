@@ -110,6 +110,7 @@ public class Progetto {
         aggiungiServiziCollegati(server, servizi, ServiziList);
         //assegna categoria server
         assegnaCategoria(server);
+
         task1 tsk = new task1();
         tsk.task1s(server,zone);
         Task2 tsk2 = new Task2();

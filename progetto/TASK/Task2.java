@@ -78,10 +78,8 @@ public class Task2 {
     private boolean condizione4(Zona[] zona,Servizio[] servizio,Server[] server){
         int b=0;
         for (Zona z: zona){
-            System.out.println(z.getId());
             int a =0;
             for (Server s1: server){
-                System.out.println(s1.getId());
                 if (z.getId().equals(s1.getZona().getId())){
                     ArrayList<Servizio> servz = new ArrayList<>(s1.getServiziList());
                     ArrayList<String> servizi= new ArrayList<>();
@@ -94,9 +92,7 @@ public class Task2 {
                             if (s1.getZona().equals(s2.getZona()))
                                 servz.addAll(s2.getServiziList());
                     }
-                    System.out.println(servz);
                     servz.sort(Comparator.comparing(Servizio::getNome));
-
                     if (servz.size()==servizi.size()) {
                         for (int i = 0; i < servz.size(); i++) {
                             if(servz.get(i).getNome().equals(servizi.get(i))){
