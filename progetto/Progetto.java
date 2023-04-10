@@ -1,5 +1,6 @@
 package progetto;
 
+import progetto.TASK.Task2;
 import progetto.classi.Categoria;
 import progetto.classi.Server;
 import progetto.classi.Servizio;
@@ -7,8 +8,6 @@ import progetto.classi.Zona;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static progetto.TASK.task1.*;
 
 public class Progetto {
 
@@ -65,7 +64,6 @@ public class Progetto {
         String[] ServerList = new String[numServer];
         String[] ServiziList = new String[numServer];
 
-
         //Creazione oggetti di tipo Servizio
         for (int i = 0; i < numServizi; i++) {
             String nomeServizio = scan.next();
@@ -99,45 +97,22 @@ public class Progetto {
             ServiziList[i] = scan.next();
 
             Zona zonaServer = cercaZonaServer(zone,idZonaS);
-            //System.out.println("zone : "+zonaServer.getId());
             server[i] = new Server(idServer,zonaServer, uptime, numPorte, numAtt, tempR);
 
             if(zonaServer != null)
                 zonaServer.setServerZona(server[i]);
 
         }
-
         //collega server
         aggiungiServerCollegati(server, ServerList);
         //collega servizi
         aggiungiServiziCollegati(server, servizi, ServiziList);
         //assegna categoria server
         assegnaCategoria(server);
-
-       /* for(Server e : server){
-            System.out.print(e.getId()+" ");
-            System.out.print(e.getZona().getId()+" ");
-            System.out.print(e.getUptime()+" ");
-            System.out.print(e.getNumPorte()+" ");
-            System.out.print(e.getNumAttacchi()+" ");
-            System.out.print(e.getTempoRiparazione()+" ");
-            System.out.println(e.getServerCollegati());//RICONTROLLARE
-            System.out.println(e.getServiziServer());
-
-        }*/
-        //serverPerCategoria(server);
-        //task1 obj= new task1();
-        //obj.stampaNumeroServerPerCategoria(server);
-        numTotale();
-        serverPerCateg(server);
-        System.out.println(getCategoriaConPiuServer(server));
-        System.out.println(getServerConPiuColleg(server));
-        System.out.println(numServUptime(server));
-        serverPerZona(server,zone);
-
-
-
-
+        //task1 tsk = new task1();
+        //tsk.task1s(server,zone);
+        Task2 tsk2 = new Task2();
+        System.out.println(tsk2.condizione4(zone,servizi,server));
 
 
     }
