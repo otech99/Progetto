@@ -116,7 +116,6 @@ public class Progetto {
         tsk2.task2(server,zone,servizi,scan);
 
 
-
     }
 
 }
