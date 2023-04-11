@@ -147,12 +147,7 @@ public class Progetto {
             case "TASK3" -> {
                 System.out.println("ANCORA NON PRESENTE");
                 System.out.println();
-                /*Task3 task3 = new Task3();
-                if (task3.task3(regioni, input))
-                    System.out.println("VALID");
-                else
-                    System.out.println("NOT VALID");
-            */
+
             }
         }
         scan.close();
