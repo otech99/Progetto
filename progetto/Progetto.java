@@ -2,6 +2,7 @@ package progetto;
 
 import progetto.TASK.Task1;
 import progetto.TASK.Task2;
+import progetto.TASK.Task3;
 import progetto.entita.Categoria;
 import progetto.entita.Server;
 import progetto.entita.Servizio;
@@ -145,10 +146,12 @@ public class Progetto {
                     System.out.println("NO");
             }
             case "TASK3" -> {
-                System.out.println("ANCORA NON PRESENTE");
-                System.out.println();
-                /*Task3 task3 = new Task3();
-                if (task3.task3(regioni, input))
+                //System.out.println("ANCORA NON PRESENTE");
+                Task3 task3 = new Task3();
+                task3.task3(server, zone, servizi, scan);
+
+
+                /*if (task3.task3(regioni, input))
                     System.out.println("VALID");
                 else
                     System.out.println("NOT VALID");

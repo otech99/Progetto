@@ -12,6 +12,11 @@ public class Server {
     private Categoria catg;
     private static int numServerTotali;
 
+    private int attDir=0;
+
+    private int attIndir=0;
+
+
     private final ArrayList<Server> ServerList = new ArrayList<>();
     private final ArrayList<Servizio> ServiziList = new ArrayList<>();
 
@@ -37,7 +42,6 @@ public class Server {
 
     public Zona getZona() {
         return zona;
-
     }
 
     public int getUptime() {
@@ -70,6 +74,22 @@ public class Server {
     }
     public static int getNumServerTotali() {
         return numServerTotali;
+    }
+
+    public int getAttDir() {
+        return attDir;
+    }
+
+    public void setAttDir(int attDir) {
+        this.attDir = attDir;
+    }
+
+    public int getAttIndir() {
+        return attIndir;
+    }
+
+    public void setAttIndir(int attIndir) {
+        this.attIndir = attIndir;
     }
 
     @Override
