@@ -1,6 +1,6 @@
 package progetto.TASK;
 
-import progetto.classi.Server;
+import progetto.entita.Server;
 
 import java.util.Scanner;
 
@@ -23,17 +23,10 @@ public class Task3 {
                             if(e.getId().equals(s.getServerList().get(j).getId())) { // e se l' id del server è uguale all' id corrente della server list
                                 e.setNumAttacchi(e.getNumAttacchi()+1);
                             }
-
                         }
                     }
-
                     }
                 }
-
-
             }
-
         }
-
-    }
 }

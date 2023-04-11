@@ -7,7 +7,7 @@ public class Server {
     private final Zona zona;
     private final int uptime;
     private final int numPorte;
-    private final int numAttacchi;
+    private int numAttacchi;
     private final int tempoRiparazione;
     private Categoria catg;
     private static int numServerTotali;
@@ -15,6 +15,10 @@ public class Server {
     private final ArrayList<Server> ServerList = new ArrayList<>();
     private final ArrayList<Servizio> ServiziList = new ArrayList<>();
 
+
+    public void setNumAttacchi(int numAttacchi) {
+        this.numAttacchi = numAttacchi;
+    }
 
     public Server(String id, Zona zona, int uptime, int numPorte, int numAttacchi, int tempoRiparazione) {
         this.id = id;
