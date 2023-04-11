@@ -22,7 +22,7 @@ public class Task3 {
                         for (Server e : server) { //Re-itero di nuovo per ogni server
                             if(e.getId().equals(s.getServerList().get(j).getId())) { // e se l' id del server è uguale all' id corrente della server list
                                 e.setNumAttacchi(e.getNumAttacchi()+1);
-                                System.out.println();
+
                             }
                         }
                     }
