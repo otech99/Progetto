@@ -3,7 +3,7 @@ package progetto.entita;
 import java.util.ArrayList;
 
 public class Zona {
-    private String id;
+    private final String id;
     private static int numZoneTotali;
     ArrayList<Server> serverZona = new ArrayList<>();
     public Zona(String id){
