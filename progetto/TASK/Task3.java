@@ -39,27 +39,30 @@ public class Task3 {
 
     }
 
-    /*private boolean condizione1(Server[] server, Zona[] zona, int[] numAttI) {
+    private boolean condizione1(Server[] server, Zona[] zona, int[] numAttI) {
+        int c=0;
         for (Zona z:zona){
-            for (Server s:server){
-                if((z.getId().equals(s.getZona().getId()))&&(s.getNumAttacchi())){
-
+            c=0;
+            for (int i=0; i<server.length; i++){
+                if( (z.getId().equals(server[i].getZona().getId()) ) && ( server[i].getNumAttacchi()-numAttI[i])>=2 ){
+                    c++;
                 }
             }
         }
-    }*/
+        return c>=1;
+    }
 
-    public static void condizione2(Server[] server, Zona[] zona) {
+    public static boolean condizione2(Server[] server, Zona[] zona) {
         int c=0;
         for (Zona z:zona){
             c=0;
             for (Server s:server){
                 if(z.getId().equals(s.getZona().getId()) && s.getAttDir() == 0 && s.getAttIndir() == 0){
-                    s.getZona().getId()
+                    c++;
                 }
             }
         }
-        //return c>=1;
+        return c>=1;
     }
     private boolean condizione3(Server[] server, Zona[] zona) {
         int c=0;

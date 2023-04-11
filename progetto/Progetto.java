@@ -149,13 +149,14 @@ public class Progetto {
                 //System.out.println("ANCORA NON PRESENTE");
                 Task3 task3 = new Task3();
                 task3.task3(server, zone, servizi, scan);
-
-
-                /*if (task3.task3(regioni, input))
+                /*
+                if (task3.task3(regioni, input))
                     System.out.println("VALID");
                 else
                     System.out.println("NOT VALID");
-            */
+
+                 */
+
             }
         }
         scan.close();
