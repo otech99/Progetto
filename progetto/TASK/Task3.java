@@ -7,7 +7,11 @@ import progetto.entita.Zona;
 import java.util.Scanner;
 
 public class Task3 {
-    public static void task3(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan) {
+    public static void task3(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan ) {
+        int numAttI[]= new int[server.length];  //numero di attachi iniziali
+        for (int i=0; i< server.length; i++){ //Per ogni server viene preso il numero di attachi e salvato vettore
+            numAttI[i]=server[i].getNumAttacchi();  // chiamato numAttI che salva quindi lo stato iniziale degli attacchi
+        }
         int numAttacchi = scan.nextInt();
         String[] IdServerAtt = new String[numAttacchi];
         for (int i = 0; i < numAttacchi; i++) {
@@ -35,24 +39,26 @@ public class Task3 {
             }
         }
         //return(condizione1(server, zona)&&condizione2(server, zona));
-        condizione2(server, zona);
+        condizione1(server, zona, numAttI);
+        //condizione2(server, zona);
 
     }
 
-    private boolean condizione1(Server[] server, Zona[] zona, int[] numAttI) {
+    public static void condizione1(Server[] server, Zona[] zona, int[] numAttI) {
         int c=0;
         for (Zona z:zona){
             c=0;
             for (int i=0; i<server.length; i++){
                 if( (z.getId().equals(server[i].getZona().getId()) ) && ( server[i].getNumAttacchi()-numAttI[i])>=2 ){
                     c++;
+                    System.out.println(server[i].getId()+c);
                 }
             }
         }
-        return c>=1;
+        //return c>=1;
     }
 
-    public static boolean condizione2(Server[] server, Zona[] zona) {
+    /*private boolean condizione2(Server[] server, Zona[] zona) {
         int c=0;
         for (Zona z:zona){
             c=0;
@@ -63,7 +69,7 @@ public class Task3 {
             }
         }
         return c>=1;
-    }
+    }*/
     private boolean condizione3(Server[] server, Zona[] zona) {
         int c=0;
         for (Zona z:zona){
