@@ -1,14 +1,14 @@
 package progetto.TASK;
 
 
-import progetto.classi.Categoria;
-import progetto.classi.Server;
-import progetto.classi.Zona;
+import progetto.entita.Categoria;
+import progetto.entita.Server;
+import progetto.entita.Zona;
 
 import java.util.*;
 
-public class task1 {
-    public void task1s(Server[] server,Zona[] zona){
+public class Task1 {
+    public void task1(Server[] server,Zona[] zona){
         info1();
 
         info2(server);

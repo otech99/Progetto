@@ -1,19 +1,21 @@
 package progetto;
 
+import progetto.TASK.Task1;
 import progetto.TASK.Task2;
-import progetto.TASK.task1;
-import progetto.classi.Categoria;
-import progetto.classi.Server;
-import progetto.classi.Servizio;
-import progetto.classi.Zona;
+import progetto.entita.Categoria;
+import progetto.entita.Server;
+import progetto.entita.Servizio;
+import progetto.entita.Zona;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Progetto {
 
-    public static void aggiungiServerCollegati(Server[] server, String[] ServerList){
-        for(int i = 0; i < server.length; i++){
+
+    //collega server
+    public static void aggiungiServerCollegati(Server[] server, String[] ServerList) {
+        for (int i = 0; i < server.length; i++) {
             String[] serverList = ServerList[i].split(",");
             for (String s : serverList)
                 for (Server e : server)
@@ -21,8 +23,10 @@ public class Progetto {
                         server[i].setServerList(e);
         }
     }
-    public static void aggiungiServiziCollegati(Server[] server, Servizio[] servizi, String[] ServiziList){
-        for(int i = 0; i < server.length; i++){
+
+    //collega servizi
+    public static void aggiungiServiziCollegati(Server[] server, Servizio[] servizi, String[] ServiziList) {
+        for (int i = 0; i < server.length; i++) {
             String[] serviziList = ServiziList[i].split(",");
             for (String s : serviziList)
                 for (Servizio e : servizi)
@@ -30,42 +34,32 @@ public class Progetto {
                         server[i].setServiziList(e);
         }
     }
-    public static Zona  cercaZonaServer(Zona[] zone, String idZona){
+
+    //Assegna zona
+    public static Zona cercaZonaServer(Zona[] zone, String idZona) {
         for (Zona zona : zone)
             if (zona.getId().equals(idZona))
                 return zona;
         return null;
     }
-    public static void assegnaCategoria(Server[] server){
+
+    //assegna categoria server
+    public static void assegnaCategoria(Server[] server) {
         for (Server s : server) {
             ArrayList<Server> serverColl = new ArrayList<>(s.getServerList());
             int numServerColl = serverColl.size();
             int numServerZona = s.getZona().getServerZona().size();
-            if(numServerColl == 0)
+            if (numServerColl == 0)
                 s.setCatg(Categoria.singleton);
-            else
-                if((numServerColl + 1) == numServerZona)
-                    s.setCatg(Categoria.honeypot);
-                else
-                    if(numServerColl >= 5)
-                        s.setCatg(Categoria.zombie);
+            else if ((numServerColl + 1) == numServerZona)
+                s.setCatg(Categoria.honeypot);
+            else if (numServerColl >= 5)
+                s.setCatg(Categoria.zombie);
         }
     }
 
-    public static void main(String[]args) {
-        Scanner scan = new Scanner(System.in);
-
-        int numServizi = scan.nextInt();
-        int numZone = scan.nextInt();
-        int numServer = scan.nextInt();
-        Servizio[] servizi = new Servizio[numServizi];
-        Zona[] zone = new Zona[numZone];
-        Server[] server = new Server[numServer];
-
-        String[] ServerList = new String[numServer];
-        String[] ServiziList = new String[numServer];
-
-        //Creazione oggetti di tipo Servizio
+    //Creazione oggetti di tipo Servizio
+    public static void creaServizi(Servizio[] servizi, Scanner scan, int numServizi) {
         for (int i = 0; i < numServizi; i++) {
             String nomeServizio = scan.next();
             int numPorte = scan.nextInt();
@@ -73,13 +67,18 @@ public class Progetto {
             servizi[i] = new Servizio(nomeServizio, numPorte, numVul);
         }
 
-        //Creazione oggetti di tipo Zona
+    }
+
+    //Creazione oggetti di tipo Zona
+    public static void creaZone(Zona[] zone, Scanner scan, int numZone) {
         for (int i = 0; i < numZone; i++) {
             String IdZone = scan.next();
             zone[i] = new Zona(IdZone);
         }
+    }
 
-        //Creazione oggetti di tipo Server
+    //Creazione oggetti di tipo Server
+    public static void creaServer(Server[] server, Zona[] zone, String[] ServerList, String[] ServiziList, Scanner scan, int numServer) {
         for (int i = 0; i < numServer; i++) {
             String idServer;
             String idZonaS;
@@ -97,13 +96,35 @@ public class Progetto {
             ServerList[i] = scan.next();
             ServiziList[i] = scan.next();
 
-            Zona zonaServer = cercaZonaServer(zone,idZonaS);
-            server[i] = new Server(idServer,zonaServer, uptime, numPorte, numAtt, tempR);
+            Zona zonaServer = cercaZonaServer(zone, idZonaS);
+            server[i] = new Server(idServer, zonaServer, uptime, numPorte, numAtt, tempR);
 
-            if(zonaServer != null)
+            if (zonaServer != null)
                 zonaServer.setServerZona(server[i]);
 
         }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int numServizi = scan.nextInt();
+        int numZone = scan.nextInt();
+        int numServer = scan.nextInt();
+        Servizio[] servizi = new Servizio[numServizi];
+        Zona[] zone = new Zona[numZone];
+        Server[] server = new Server[numServer];
+
+        String[] ServerList = new String[numServer];
+        String[] ServiziList = new String[numServer];
+
+
+        //Creazione oggetti di tipo Servizio
+        creaServizi(servizi, scan, numServizi);
+        //Creazione oggetti di tipo Zona
+        creaZone(zone, scan, numZone);
+        //Creazione oggetti di tipo Server
+        creaServer(server, zone, ServerList, ServiziList, scan, numServer);
         //collega server
         aggiungiServerCollegati(server, ServerList);
         //collega servizi
@@ -111,12 +132,31 @@ public class Progetto {
         //assegna categoria server
         assegnaCategoria(server);
 
-        task1 tsk = new task1();
-        tsk.task1s(server,zone);
-        Task2 tsk2 = new Task2();
-        tsk2.task2(server,zone,servizi,scan);
-
-
+        switch (scan.next()) {
+            case "TASK1" -> {
+                Task1 task1 = new Task1();
+                task1.task1(server,zone);
+            }
+            case "TASK2" -> {
+                Task2 task2 = new Task2();
+                if (task2.task2(server, zone, servizi, scan))
+                    System.out.println("YES");
+                else
+                    System.out.println("NO");
+            }
+            case "TASK3" -> {
+                System.out.println("ANCORA NON PRESENTE");
+                System.out.println();
+                /*Task3 task3 = new Task3();
+                if (task3.task3(regioni, input))
+                    System.out.println("VALID");
+                else
+                    System.out.println("NOT VALID");
+            */
+            }
+        }
+        scan.close();
     }
-
 }
+
+

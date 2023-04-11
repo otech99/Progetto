@@ -1,8 +1,8 @@
 package progetto.TASK;
 
-import progetto.classi.Server;
-import progetto.classi.Servizio;
-import progetto.classi.Zona;
+import progetto.entita.Server;
+import progetto.entita.Servizio;
+import progetto.entita.Zona;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,14 +13,11 @@ public class Task2 {
     private int p;
     private int q;
 
-    public void task2(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan){
+    public boolean task2(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan){
         p = scan.nextInt();
         q= scan.nextInt();
 
-        if(condizione1(server)&&condizione2(zona,server)&&condizione3(server)&&condizione4(zona, servizio, server))
-            System.out.println("YES");
-        else
-            System.out.println("NO");
+        return (condizione1(server)&&condizione2(zona,server)&&condizione3(server)&&condizione4(zona, servizio, server));
     }
 
     private boolean condizione1(Server[] server) {

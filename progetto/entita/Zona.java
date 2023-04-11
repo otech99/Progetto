@@ -1,4 +1,4 @@
-package progetto.classi;
+package progetto.entita;
 
 import java.util.ArrayList;
 
@@ -10,16 +10,8 @@ public class Zona {
         this.id= id;
         numZoneTotali++;
     }
-    public String getZona(){ // non serve?
-        return this.id;
-    }
-
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
     public void setServerZona(Server server){
         this.serverZona.add(server);
@@ -31,7 +23,6 @@ public class Zona {
     public static int getNumZoneTotali() {
         return numZoneTotali;
     }
-
     @Override
     public String toString() {
         return "Zona{" +
