@@ -37,7 +37,7 @@ public class Task1 {
             Categoria categoria = s.getCatg();
             switch (categoria){
                 case zombie ->
-                    zombie++;
+                        zombie++;
                 case honeypot ->
                         honeypot++;
                 case singleton ->
