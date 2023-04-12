@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Task1 {
     public void task1(Server[] server,Zona[] zona){
-        info1();
+        info1(server,zona);
 
         info2(server);
 
@@ -26,9 +26,9 @@ public class Task1 {
         info8(zona,server);
 
     }
-    private static void info1(){
-        System.out.print(Server.getNumServerTotali()+" ");
-        System.out.println(Zona.getNumZoneTotali());
+    private static void info1(Server[] server, Zona[] zona){
+        System.out.print(server.length+" ");
+        System.out.println(zona.length);
     }
     //STAMPA IL NUMERO DI SERVER PER OGNI CATEGORIA
     private static void info2(Server[] server){

@@ -10,8 +10,6 @@ public class Server {
     private int numAttacchi;
     private final int tempoRiparazione;
     private Categoria catg;
-    private static int numServerTotali;
-
     private int attDir=0;
 
     private int attIndir=0;
@@ -32,7 +30,6 @@ public class Server {
         this.numPorte = numPorte;
         this.numAttacchi = numAttacchi;
         this.tempoRiparazione = tempoRiparazione;
-        numServerTotali++;
     }
 
     public String getId() {
@@ -72,10 +69,6 @@ public class Server {
     public void setCatg(Categoria catg){
         this.catg= catg;
     }
-    public static int getNumServerTotali() {
-        return numServerTotali;
-    }
-
     public int getAttDir() {
         return attDir;
     }
