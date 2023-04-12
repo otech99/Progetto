@@ -2,7 +2,7 @@ package progetto;
 
 import progetto.TASK.Task1;
 import progetto.TASK.Task2;
-import progetto.TASK.Task3;
+import progetto.TASK.Task3_Alternativa;
 import progetto.entita.Categoria;
 import progetto.entita.Server;
 import progetto.entita.Servizio;
@@ -146,10 +146,10 @@ public class Progetto {
                     System.out.println("NO");
             }
             case "TASK3" -> {
-                Task3 task3 = new Task3();
+                Task3_Alternativa task3 = new Task3_Alternativa();
                 task3.task3(server, zone,scan);
                 /*
-                if (task3.task3(regioni, input))
+                if
                     System.out.println("VALID");
                 else
                     System.out.println("NOT VALID");
