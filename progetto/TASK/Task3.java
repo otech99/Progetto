@@ -39,7 +39,7 @@ public class Task3 {
                             }//agginge il numero degli attacchi indiretti che riceve ogni server
                             for (int a = 0; a < numAtt; a++) {
                                 if (serv.contains(attacchi[a]))
-                                    serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                                    serverAttaccati.put(attacchi[a], serverAttaccati.get(attacchi[a] + 1));
                             }
                         }
                         if (serverAttaccati.get(s.getId())>=2)
