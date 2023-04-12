@@ -1,25 +1,135 @@
 package progetto.TASK;
 
 import progetto.entita.Server;
-import progetto.entita.Servizio;
 import progetto.entita.Zona;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Task3 {
-    public static void task3(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan ) {
-        int numAttI[]= new int[server.length];  //numero di attachi iniziali
-        for (int i=0; i< server.length; i++){ //Per ogni server viene preso il numero di attachi e salvato vettore
-            numAttI[i]=server[i].getNumAttacchi();  // chiamato numAttI che salva quindi lo stato iniziale degli attacchi
+
+    Scanner scan = new Scanner(System.in);
+        int numAtt = scan.nextInt();
+        String[] attacchi= new String[numAtt];
+
+        public  boolean condizione1(Zona[]  zona, Server[] server,int numAtt,String[] attacchi) {
+            Map<String, Integer> serverAttaccati = new HashMap<>();
+            //Mette i server in una Mappa
+            for (Server s : server) {
+                serverAttaccati.put(s.getId(), 0);
+            }
+
+            int attachiPerZona=0;
+            for (Zona z : zona) {
+                int attacchiPerServer =0;
+                for (Server s : server) {
+                    if (z.getId().equals(s.getZona().getId())) {
+                        ArrayList<Server> serv = new ArrayList<>(s.getServerList());
+                        //agginge il numero degli attacchi diretti che riceve ogni server
+                        for (int i = 0; i < numAtt; i++) {
+                            if (s.getId().equals(attacchi[i])) {
+                                serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                            }//agginge il numero degli attacchi indiretti che riceve ogni server
+                            for (int a = 0; a < numAtt; a++) {
+                                if (serv.contains(attacchi[i]))
+                                    serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                            }
+                        }
+                        if (serverAttaccati.get(s.getId())>=2)
+                            attacchiPerServer++;
+                    }
+                }
+                if (attacchiPerServer>=1)
+                    attachiPerZona++;
+            }
+            return attachiPerZona == zona.length;
+        }
+    public  boolean condizione2(Zona[]  zona, Server[] server,int numAtt,String[] attacchi) {
+        Map<String, Integer> serverAttaccati = new HashMap<>();
+        //Mette i server in una Mappa
+        for (Server s : server) {
+            serverAttaccati.put(s.getId(), 0);
+        }
+
+        int attachiPerZona=0;
+        for (Zona z : zona) {
+            int attacchiPerServer =0;
+            for (Server s : server) {
+                if (z.getId().equals(s.getZona().getId())) {
+                    ArrayList<Server> serv = new ArrayList<>(s.getServerList());
+                    //agginge il numero degli attacchi diretti che riceve ogni server
+                    for (int i = 0; i < numAtt; i++) {
+                        if (s.getId().equals(attacchi[i])) {
+                            serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                        }//agginge il numero degli attacchi indiretti che riceve ogni server
+                        for (int a = 0; a < numAtt; a++) {
+                            if (serv.contains(attacchi[i]))
+                                serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                        }
+                    }
+                    //incrementa se trova un server che non ha ricevuto un attaco diretto e indiretto
+                    if (serverAttaccati.get(s.getId())>=0)
+                        attacchiPerServer++;
+                }
+            }
+            if (attacchiPerServer>=1)
+                attachiPerZona++;
+        }
+        return attachiPerZona == zona.length;
+    }
+    public boolean condizione3(Zona[]  zona, Server[] server,int numAtt,String[] attacchi){
+        Map<String, Integer> serverAttaccati = new HashMap<>();
+        //Mette i server in una Mappa
+        for (Server s : server) {
+            serverAttaccati.put(s.getId(), 0);
+        }
+
+        int attachiPerZona=0;
+        for (Zona z : zona) {
+            int attacchiPerServer =0;
+            for (Server s : server) {
+                if (z.getId().equals(s.getZona().getId())) {
+                    ArrayList<Server> serv = new ArrayList<>(s.getServerList());
+                    //agginge il numero degli attacchi diretti che riceve ogni server
+                    for (int i = 0; i < numAtt; i++) {
+                        if (s.getId().equals(attacchi[i])) {
+                            serverAttaccati.put(s.getId(), serverAttaccati.get(s.getId() + 1));
+                        }
+                    }
+                    if (serverAttaccati.get(s.getId())>=2)
+                        attacchiPerServer++;
+                }
+            }
+            if (attacchiPerServer>=1)
+                attachiPerZona++;
+        }
+        return attachiPerZona == zona.length;
+
+    }
+
+        /*for (int i = 0; i < numAtt; i++) {
+            attacchi[i] = scan.nextInt();
+        }*/
+
+
+
+    }
+    /*public static void task3(Server[] server, Zona[] zona, Servizio[] servizio, Scanner scan) {
+        int numAttI[] = new int[server.length];  //numero di attachi iniziali
+        for (int i = 0; i < server.length; i++) { //Per ogni server viene preso il numero di attachi e salvato vettore
+            numAttI[i] = server[i].getNumAttacchi();  // chiamato numAttI che salva quindi lo stato iniziale degli attacchi
         }
         int numAttacchi = scan.nextInt();
-        String[] IdServerAtt = new String[numAttacchi];
+        String[] attacchi = new String[numAttacchi];
         for (int i = 0; i < numAttacchi; i++) {
-            IdServerAtt[i] = scan.next();
+            attacchi[i] = scan.next();
         }
+
         for (Server s : server) {
             for (int i = 0; i < numAttacchi; i++) {
-                if (IdServerAtt[i].equals(s.getId())) {
+                if (attacchi[i].equals(s.getId())) {
                     //System.out.println(s.getId() + " " + s.getNumAttacchi());
                     s.setNumAttacchi(s.getNumAttacchi() + 1);
                     s.setAttDir(s.getAttDir()+1);
@@ -39,11 +149,10 @@ public class Task3 {
             }
         }
         //return(condizione1(server, zona)&&condizione2(server, zona));
-        condizione1(server, zona, numAttI);
+        //condizione1(server, zona, numAttI);
         //condizione2(server, zona);
 
     }
-
     public static void condizione1(Server[] server, Zona[] zona, int[] numAttI) {
         int c=0;
         for (Zona z:zona){
@@ -58,7 +167,7 @@ public class Task3 {
         //return c>=1;
     }
 
-    /*private boolean condizione2(Server[] server, Zona[] zona) {
+    private boolean condizione2(Server[] server, Zona[] zona) {
         int c=0;
         for (Zona z:zona){
             c=0;
@@ -69,7 +178,7 @@ public class Task3 {
             }
         }
         return c>=1;
-    }*/
+    }
     private boolean condizione3(Server[] server, Zona[] zona) {
         int c=0;
         for (Zona z:zona){
@@ -81,7 +190,4 @@ public class Task3 {
             }
         }
         return c>=1;
-    }
-
-
-}
+    }*/
