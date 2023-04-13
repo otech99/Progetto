@@ -2,7 +2,7 @@ package progetto;
 
 import progetto.TASK.Task1;
 import progetto.TASK.Task2;
-import progetto.TASK.Task3_Alternativa;
+import progetto.TASK.Task3;
 import progetto.entita.Categoria;
 import progetto.entita.Server;
 import progetto.entita.Servizio;
@@ -10,6 +10,7 @@ import progetto.entita.Zona;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Progetto {
 
@@ -146,16 +147,11 @@ public class Progetto {
                     System.out.println("NO");
             }
             case "TASK3" -> {
-                Task3_Alternativa task3 = new Task3_Alternativa();
-                task3.task3(server, zone,scan);
-                /*
-                if
+                Task3 task3 = new Task3();
+                if(task3.task3(server, zone,scan))
                     System.out.println("VALID");
                 else
                     System.out.println("NOT VALID");
-
-                 */
-
             }
         }
         scan.close();
